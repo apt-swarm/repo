@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y reprepro gnupg pinentry-curses
+          sudo apt-get install -y reprepro gnupg2 pinentry-curses gnupg-agent
     
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -46,6 +46,14 @@ jobs:
 
           # Restart gpg agent to let it pick up those settings
           gpgconf --kill gpg-agent
+
+          # Pre-load the passphrase using gpg-preset-passphrase
+          KEYGRIP=$(gpg --list-secret-keys --with-keygrip --with-colons | grep '^grp' | head -n1 | cut -d: -f10)
+          echo "$GPG_PASSPHRASE" | /usr/lib/gnupg/gpg-preset-passphrase --preset "$KEYGRIP"
+
+          # Verify GPG key usability
+          gpg --batch --yes --pinentry-mode loopback --sign --passphrase "$GPG_PASSPHRASE" \
+            --output /dev/null <<< "signing test"
 
       # 4. Prepare reprepro configuration
       - name: Configure reprepro
