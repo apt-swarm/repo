@@ -1,11 +1,9 @@
-# General things
-* @KTrain5169
+# All maintainers
+.vscode/* @neuroverse-fm/apt-swarm-maintainers
+docs/* @neuroverse-fm/apt-swarm-maintainers
+.github/* @neuroverse-fm/apt-swarm-maintainers
 
-# Docs
-docs/* @KTrain5169 @Nagol12344
+# Actions dev
+.github/actions/* @KTrain5169
 
-# Place all package maintainers below this comment block.
-# Done for precedence rules within CODEOWNERS.
-
-# SwarmFM Player
-debs/swarmfm_*_amd64.deb @Nagol12344
+# Other code owners will be handled via an action
