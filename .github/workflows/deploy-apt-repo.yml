@@ -105,7 +105,7 @@ jobs:
           # reprepro will scan pool/ and generate dists/, Release, Packages.gz, Release.gpg
           reprepro -b public export
       
-      # Build the astro docs
+      # 7. Build the astro docs
       - name: Build astro
         run: |
           # install pnpm
@@ -120,8 +120,6 @@ jobs:
           mv -f dist/* ../public/
 
 
-      
-      
       # 8. Deploy the `public/` folder to the gh-pages branch
       - name: Upload for GitHub Pages
         uses: actions/upload-pages-artifact@v3
