@@ -92,8 +92,8 @@ jobs:
 
           # Loop through and add all .deb files in public/pool
           for deb in public/pool/**/*.deb; do
-            reprepro -b public includedeb bookworm "$deb"
-            reprepro -b public includedeb noble "$deb"
+            reprepro -b public -S main includedeb bookworm "$deb"
+            reprepro -b public -S main includedeb noble "$deb"
           done
 
           # reprepro will scan pool/ and generate dists/, Release, Packages.gz, Release.gpg
