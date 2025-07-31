@@ -80,6 +80,7 @@ jobs:
           mkdir -p public/pool/main
           cp debs/*.deb public/pool/main/
           cp apt-swarm-public-key.asc public/
+          ls -R public/
 
       # 6. Build and sign the repository
       - name: Build APT metadata
