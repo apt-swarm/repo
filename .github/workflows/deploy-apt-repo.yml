@@ -75,10 +75,11 @@ jobs:
           EOF
 
       # 5. Copy your .deb files into the pool
-      - name: Copy Debian packages
+      - name: Copy Debian packages and key
         run: |
           mkdir -p public/pool/main
           cp debs/*.deb public/pool/main/
+          cp apt-swarm-public-key.asc public/
 
       # 6. Build and sign the repository
       - name: Build APT metadata
