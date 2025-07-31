@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - 'debs/**'
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy-apt-repo.yml'
 
 jobs:
   build:
