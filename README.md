@@ -19,7 +19,7 @@ sudo chmod a+r /etc/apt/keyrings/apt-swarm.asc
 - Add the repo to APT's sources list:
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ <codename> main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
+echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ <codename> main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
 ```
 
 Replace `<codename>` with the codename you want to target (either `bookworm` (Debian) or `noble` (Ubuntu))
