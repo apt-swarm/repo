@@ -1,0 +1,105 @@
+name: Build & Publish APT Repo
+
+# Trigger the workflow whenever you push new .deb files or change the workflow itself
+on:
+  push:
+    paths:
+      - 'debs/**'
+      - '.github/workflows/deploy.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Make your KEY ID available to the steps (no 0x prefix)
+      GPG_KEY_ID: D3D7A56E1A3DE7FF
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Install reprepro and GPG tools, prepare pages
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y reprepro gnupg
+    
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
+      # 3. Import your private GPG key into the runner
+      - name: Import GPG private key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          # Load the private key
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+
+          # Allow GPG to use loopback for passphrase entry
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --kill gpg-agent
+
+      # 4. Prepare reprepro configuration
+      - name: Configure reprepro
+        run: |
+          mkdir -p public/conf
+          cat > public/conf/distributions <<EOF
+          Origin: apt-swarm
+          Label:  APT repository for the Swarm's creations
+          Suite:  stable
+          Codename: bookworm
+          Architectures: amd64
+          Components: main
+          SignWith: $GPG_KEY_ID
+
+          Origin: apt-swarm
+          Label:  APT repository for the Swarm's creations
+          Suite:  stable
+          Codename: noble
+          Architectures: amd64
+          Components: main
+          SignWith: $GPG_KEY_ID
+          EOF
+
+      # 5. Copy your .deb files into the pool
+      - name: Copy Debian packages
+        run: |
+          mkdir -p public/pool/main
+          cp debs/*.deb public/pool/main/
+
+      # 6. Build and sign the repository
+      - name: Build APT metadata
+        run: |
+          pushd public
+          # Ensure GPG can ask for passphrase non-interactively
+          export GPG_TTY=$(tty)
+          export GPG_AGENT_INFO=
+          gpgconf --launch gpg-agent
+
+          # reprepro will scan pool/ and generate dists/, Release, Packages.gz, Release.gpg
+          reprepro export
+          popd
+
+      # 7. Deploy the `public/` folder to the gh-pages branch
+      - name: Upload for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+  deploy:
+    name: Deploy repo
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+        name: github-pages
+        url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+        pages: write
+        id-token: write
+    steps:
+        - name: Deploy
+          id: deploy
+          uses: actions/deploy-pages@v4
