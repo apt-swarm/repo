@@ -3,11 +3,28 @@ title: Uploading a new package
 description: How to upload a new package to the repo.
 ---
 import { Steps } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
 
 This is for new package, updates are on the next page!
 
 <Steps>
-    1. Make sure your package meets all Prerequisites on the previous page.
-    2. Build your package with correct metadata, it should have a name, icon, and author at the very least
-    3. coming soon when i templets working lol
+    1. Make sure your package meets all prerequisites on the [previous page](/apt-swarm/uploading/prereqs).
+    2. Build your package with correct metadata, it should have a name, icon, and author at the very least.
+    3. [Create a fork of the repo](https://github.com/neuroverse-fm/apt-swarm/fork), and place your deb file in the /debs folder
+        <FileTree>
+        - .github
+        - **debs**
+            - example.deb *This could be your package!!!*
+        - docs
+            - astro.config.mjs
+            - ...
+        - .gitignore
+        - PROCEDURES.md
+        - README.md
+        - apt-swarm-public-key.asc
+        </FileTree>
+    4.  
+        Make a PR with the tool below:
+        *Tool coming soon!*
+    5. Fill in our template, and wait for either questions or approval of your app!
 </Steps>
