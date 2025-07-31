@@ -1,0 +1,7 @@
+{
+    "version": 1,
+    "mention_all": true,
+    "paths": {
+        "debs/swarmfm_*_amd64.deb": ["@KTrain5169"]
+    }
+}
