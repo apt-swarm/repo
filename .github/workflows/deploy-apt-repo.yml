@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y reprepro gnupg
+          sudo apt-get install -y reprepro gnupg pinentry-curses
     
       - name: Configure Pages
         uses: actions/configure-pages@v4
@@ -40,7 +40,11 @@ jobs:
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
 
           # Allow GPG to use loopback for passphrase entry
+          mkdir -p ~/.gnupg
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+
+          # Restart gpg agent to let it pick up those settings
           gpgconf --kill gpg-agent
 
       # 4. Prepare reprepro configuration
