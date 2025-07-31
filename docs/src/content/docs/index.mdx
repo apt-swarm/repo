@@ -1,0 +1,36 @@
+---
+title: Welcome to the docs!
+description: This is the docs for either uploading a package to the repos, or using the repos to install packages.
+template: splash
+hero:
+  tagline: Welcome to the docs!
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Get the repos!
+      link: /installation
+      icon: right-arrow
+    - text: Read the Starlight docs
+      link: https://starlight.astro.build
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Some cool things
+
+<CardGrid stagger>
+	<Card title="Update content" icon="pencil">
+		Our docs are open source! Please see the "docs" directory on github.
+	</Card>
+	<Card title="Add new packages" icon="add-document">
+		Want to add your package to the repos? Please see the <a href="packaging/getting-started/">Getting Started</a> guide.
+	</Card>
+	<Card title="Just want some cool swarm packages?" icon="setting">
+		Get the repositories set up with the <a href="installation/">Installation</a> guide, then explore the list of <a href="packages/">packages</a> available!
+	</Card>
+	<Card title="Read a book!" icon="open-book">
+		If you've come this far down the swarm fan projects, you might need to go outside, or just read a book.
+	</Card>
+</CardGrid>

@@ -1,0 +1,50 @@
+---
+title: Instalation
+description: A guide for anyone!
+---
+import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Prerequisites
+
+- Make sure your running a recent Debian/Ubuntu release, while other Debian based distros may work, they are not offically tested.
+- Have root access to the Linux system you are installing this on.
+
+## Installation
+<Steps>
+
+ 1. Start by adding the GPG key for the repository:
+    ```bash
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://neuroverse-fm.github.io/apt-swarm/apt-swarm-public-key.asc -o /etc/apt/keyrings/apt-swarm.asc
+    sudo chmod a+r /etc/apt/keyrings/apt-swarm.asc
+    ```
+
+ 2. Install the repository by adding it to your sources list:
+    <Tabs>
+        <TabItem label="Debian">
+          ```bash
+          echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ bookworm main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
+          ```
+        </TabItem>
+        <TabItem label="Ubuntu">
+          ```bash
+          echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ noble main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
+          ```
+        </TabItem>
+    </Tabs>
+ 
+ 3. Update your APT, and install a package!
+    ```bash
+    sudo apt update
+    sudo apt install <package>
+    ```
+    If you would like to verify the package, you can inspect any package with one command!
+    ```bash
+    apt policy <package>
+    ```
+    
+
+</Steps>
