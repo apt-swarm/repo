@@ -2,9 +2,8 @@
 title: Instalation
 description: A guide for anyone!
 ---
-
-import { Steps } from "@astrojs/starlight/components";
-import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## Prerequisites
 
@@ -12,11 +11,9 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 - Have root access to the Linux system you are installing this on.
 
 ## Installation
-
 <Steps>
 
-1.  Start by adding the GPG key for the repository:
-
+ 1. Start by adding the GPG key for the repository:
     ```bash
     sudo apt-get update
     sudo apt-get install ca-certificates curl
@@ -25,22 +22,21 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
     sudo chmod a+r /etc/apt/keyrings/apt-swarm.asc
     ```
 
-2.  Install the repository by adding it to your sources list:
-
+ 2. Install the repository by adding it to your sources list:
     <Tabs>
-      <TabItem label="Debian">
-        ```bash echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc]
-        https://neuroverse-fm.github.io/apt-swarm/ bookworm main" | sudo tee
-        /etc/apt/sources.list.d/apt-swarm.list ```
-      </TabItem>
-      <TabItem label="Ubuntu">
-        ```bash echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc]
-        https://neuroverse-fm.github.io/apt-swarm/ noble main" | sudo tee
-        /etc/apt/sources.list.d/apt-swarm.list ```
-      </TabItem>
+        <TabItem label="Debian">
+          ```bash
+          echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ bookworm main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
+          ```
+        </TabItem>
+        <TabItem label="Ubuntu">
+          ```bash
+          echo "deb [signed-by=/etc/apt/keyrings/apt-swarm.asc] https://neuroverse-fm.github.io/apt-swarm/ noble main" | sudo tee /etc/apt/sources.list.d/apt-swarm.list
+          ```
+        </TabItem>
     </Tabs>
-
-3.  Update your APT, and install a package!
+ 
+ 3. Update your APT, and install a package!
     ```bash
     sudo apt update
     sudo apt install <package>
@@ -49,5 +45,6 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
     ```bash
     apt policy <package>
     ```
+    
 
 </Steps>
