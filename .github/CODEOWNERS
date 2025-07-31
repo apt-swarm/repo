@@ -1,0 +1,11 @@
+# General things
+* @KTrain5169
+
+# Docs
+docs/* @KTrain5169 @Nagol12344
+
+# Place all package maintainers below this comment block.
+# Done for precedence rules within CODEOWNERS.
+
+# SwarmFM Player
+debs/swarmfm_*_amd64.deb @Nagol12344
