@@ -5,20 +5,15 @@ interface PRTemplate {
   filename: string;
 }
 
-// Define your PR templates here - update these based on your actual templates
 const PR_TEMPLATES: PRTemplate[] = [
-  { name: "Bug Fix", filename: "bug_fix.md" },
-  { name: "Feature", filename: "feature.md" },
-  { name: "Documentation", filename: "documentation.md" },
-  { name: "Hotfix", filename: "hotfix.md" },
+  { name: "New Package", filename: "new_package.md" },
 ];
 
 export default function PRLinker() {
   const [username, setUsername] = useState("");
-  const [repository, setRepository] = useState("apt-swarm"); // Default to your repo
+  const [repository, setRepository] = useState("apt-swarm");
   const [branch, setBranch] = useState("");
 
-  // Your main branch - update this if different
   const mainBranch = "main";
 
   const generateDiffUrl = (template?: PRTemplate): string => {
