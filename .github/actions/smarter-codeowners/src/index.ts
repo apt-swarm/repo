@@ -19,7 +19,7 @@ async function run(): Promise<void> {
         const { payload, repo } = github.context;
 
         if (!payload.pull_request) {
-            core.setFailed('This action can only be run on pull request events');
+            core.setFailed('This action can only be run on pull request events.');
             return;
         }
 
@@ -159,7 +159,7 @@ async function updateOrCreateComment(
     });
 
     const existingComment = comments.find(comment =>
-        comment.body?.includes('smarter-codeowners action') &&
+        comment.body?.includes('\`smarter-codeowners\` action') &&
         comment.body?.includes(commentTitle)
     );
 

@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Swarm APT Documentation",
-      customCss: ["./src/styles/swarmify.css"],
+      customCss: ["./src/styles/swarmify.css", "./src/styles/pr-maker.css"],
       social: [
         {
           icon: "github",

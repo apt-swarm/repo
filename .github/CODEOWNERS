@@ -3,7 +3,12 @@
 docs/* @neuroverse-fm/apt-swarm-maintainers
 .github/* @neuroverse-fm/apt-swarm-maintainers
 
+# The public key should not be modified in most circumstances
+apt-swarm-public-key.asc @KTrain5169
+
 # Actions dev
 .github/actions/* @KTrain5169
 
 # Other code owners will be handled via an action
+# The one below is a catch-all for new packages
+debs/* @neuroverse-fm/apt-swarm-maintainers

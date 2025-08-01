@@ -59,14 +59,10 @@ export default function PRLinker() {
           Generate GitHub Diff Link
         </h3>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div class="div-box">
           <label
             htmlFor="username"
-            style={{
-              display: "block",
-              marginBottom: "0.5rem",
-              fontWeight: 600,
-            }}
+            class="text-label"
           >
             GitHub Username:
           </label>
@@ -76,27 +72,14 @@ export default function PRLinker() {
             value={username}
             onInput={(e) => setUsername((e.target as HTMLInputElement).value)}
             placeholder="e.g., neuroverse-fm"
-            style={{
-              width: "100%",
-              padding: "0.5rem 0.75rem",
-              border: "1px solid var(--sl-color-gray-4)",
-              borderRadius: "6px",
-              fontSize: "14px",
-              boxSizing: "border-box",
-              background: "var(--sl-color-white)",
-              color: "black",
-            }}
+            class="text-box"
           />
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div class="div-box">
           <label
             htmlFor="repository"
-            style={{
-              display: "block",
-              marginBottom: "0.5rem",
-              fontWeight: 600,
-            }}
+            class="text-label"
           >
             Repository Name:
           </label>
@@ -106,27 +89,14 @@ export default function PRLinker() {
             value={repository}
             onInput={(e) => setRepository((e.target as HTMLInputElement).value)}
             placeholder="e.g., apt-swarm"
-            style={{
-              width: "100%",
-              padding: "0.5rem 0.75rem",
-              border: "1px solid var(--sl-color-gray-4)",
-              borderRadius: "6px",
-              fontSize: "14px",
-              boxSizing: "border-box",
-              background: "var(--sl-color-white)",
-              color: "black",
-            }}
+            class="text-box"
           />
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div class="div-box">
           <label
             htmlFor="branch"
-            style={{
-              display: "block",
-              marginBottom: "0.5rem",
-              fontWeight: 600,
-            }}
+            class="text-label"
           >
             Branch Name:
           </label>
@@ -136,16 +106,7 @@ export default function PRLinker() {
             value={branch}
             onInput={(e) => setBranch((e.target as HTMLInputElement).value)}
             placeholder="e.g., feature/new-feature"
-            style={{
-              width: "100%",
-              padding: "0.5rem 0.75rem",
-              border: "1px solid var(--sl-color-gray-4)",
-              borderRadius: "6px",
-              fontSize: "14px",
-              boxSizing: "border-box",
-              background: "var(--sl-color-white)",
-              color: "black",
-            }}
+            class="text-box"
           />
         </div>
 
@@ -161,13 +122,7 @@ export default function PRLinker() {
           <small style={{ color: "black" }}>
             Diff:{" "}
             <code
-              style={{
-                background: "var(--sl-color-gray-6)",
-                padding: "0.2rem 0.4rem",
-                borderRadius: "3px",
-                fontFamily: "var(--sl-font-mono)",
-                color: "var(--sl-color-text)",
-              }}
+              class="diff-box"
             >
               {(username !== "neuroverse-fm"
                 ? (username || "your-name") + ":"
@@ -175,13 +130,7 @@ export default function PRLinker() {
             </code>{" "}
             →{" "}
             <code
-              style={{
-                background: "var(--sl-color-gray-6)",
-                padding: "0.2rem 0.4rem",
-                borderRadius: "3px",
-                fontFamily: "var(--sl-font-mono)",
-                color: "var(--sl-color-text)",
-              }}
+              class="diff-box"
             >
               {username === "neuroverse-fm"
                 ? mainBranch
@@ -192,7 +141,7 @@ export default function PRLinker() {
       </div>
 
       <div style={{ marginTop: "2rem" }}>
-        <h4 style={{ marginBottom: "1rem" }}>Open Diff with Template:</h4>
+        <h4 class="div-box">Open Diff with Template:</h4>
 
         <div
           style={{
@@ -205,18 +154,13 @@ export default function PRLinker() {
           <button
             onClick={() => openDiff()}
             disabled={!isFormValid}
+            class="diff-template-buttons"
             style={{
-              padding: "0.5rem 1rem",
-              border: "none",
-              borderRadius: "6px",
               background: isFormValid
                 ? "var(--sl-color-blue)"
                 : "var(--sl-color-gray-4)",
               color: isFormValid ? "white" : "var(--sl-color-gray-2)",
               cursor: isFormValid ? "pointer" : "not-allowed",
-              fontSize: "14px",
-              fontWeight: 500,
-              transition: "all 0.2s ease",
             }}
           >
             Open Basic Diff
@@ -227,18 +171,14 @@ export default function PRLinker() {
               key={template.filename}
               onClick={() => openDiff(template)}
               disabled={!isFormValid}
+              class="diff-template-buttons"
               style={{
-                padding: "0.5rem 1rem",
-                border: "none",
-                borderRadius: "6px",
                 background: isFormValid
                   ? "var(--sl-color-blue)"
                   : "var(--sl-color-gray-4)",
                 color: isFormValid ? "white" : "var(--sl-color-gray-2)",
                 cursor: isFormValid ? "pointer" : "not-allowed",
-                fontSize: "14px",
-                fontWeight: 500,
-                transition: "all 0.2s ease",
+
               }}
             >
               {template.name} Template

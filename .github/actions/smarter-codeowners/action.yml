@@ -4,12 +4,12 @@ description: An action that adds various features meant to work alongside GitHub
 inputs:
   github-token:
     description: 'GitHub token for API access'
-    required: true
+    required: false
     default: ${{ github.token }}
   config-path:
     description: 'Path to the smarter-codeowners-config.json file'
     required: false
-    default: '.github/smarter-codeowners-config.json'
+    default: './smarter-codeowners-config.json'
   comment-title:
     description: 'Title for the code owners comment'
     required: false

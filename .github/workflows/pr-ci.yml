@@ -1,0 +1,14 @@
+name: Pull Request CI
+
+on:
+    pull_request:
+
+jobs:
+    review:
+        name: Ping relevant packagers
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check PR
+              uses: ./.github/smarter-codeowners
+              with:
+                config-path: ./.github/smarter-codeowners-config.json
