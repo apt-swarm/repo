@@ -3,6 +3,7 @@ name: Build & Publish APT Repo
 # Trigger the workflow whenever you push new .deb files or change the workflow itself
 on:
   push:
+    branches: [main]
     paths:
       - 'debs/**'
       - '.github/workflows/deploy-apt-repo.yml'
