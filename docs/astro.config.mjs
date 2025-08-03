@@ -6,8 +6,7 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://neuroverse-fm.github.io",
-  base: "/apt-swarm",
+  site: "https://apt-swarm.ktrain5369.dev",
   integrations: [
     starlight({
       title: "Swarm APT Documentation",
