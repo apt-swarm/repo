@@ -1,14 +1,17 @@
 name: Pull Request CI
 
 on:
-    pull_request:
+    pull_request_target:
 
 jobs:
     review:
         name: Ping relevant packagers
         runs-on: ubuntu-latest
         steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
             - name: Check PR
-              uses: ./.github/smarter-codeowners
+              uses: ./.github/actions/smarter-codeowners
               with:
                 config-path: ./.github/smarter-codeowners-config.json
