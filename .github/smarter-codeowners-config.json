@@ -1,8 +1,0 @@
-{
-    "$schema": "./actions/smarter-codeowners/config.schema.json",
-    "version": 1,
-    "mention_all": true,
-    "paths": {
-        "debs/swarmfm_*_amd64.deb": ["@Nagol12344"]
-    }
-}
