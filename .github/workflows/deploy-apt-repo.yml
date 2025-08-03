@@ -9,6 +9,7 @@ on:
       - 'ci.sh'
       - 'apt-swarm-public-key.asc'
       - '.github/workflows/deploy-apt-repo.yml'
+  workflow_dispatch:
 
 jobs:
   build:
