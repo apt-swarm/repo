@@ -26,6 +26,7 @@ jobs:
 
       - name: Run shell script
         env:
+          GH_TOKEN: ${{ github.token }}
           GPG_KEY_ID: D3D7A56E1A3DE7FF
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
