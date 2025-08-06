@@ -43,7 +43,7 @@ EOF
 # Fetch steps go here
 # Needs to be placed into public/pool/main
 for key in $(jq -r 'keys[]' ./repos.json); do
-    value=$(jq -r --arg "$key" '.[$k]' ./repos.json)
+    value=$(jq -r --arg k "$key" '.[$k]' ./repos.json)
     echo "Downloading \"$key\" package from \"$value\""
     version=$(gh api "repos/$value/tags" --jq '.[0].name')
     gh release download $version --repo "$value" --dir "public/pool/main" --pattern "*.deb"
